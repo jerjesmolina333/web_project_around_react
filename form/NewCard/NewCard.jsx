@@ -17,7 +17,7 @@ export default function NewCard() {
           maxlength="30"
           required
         />
-        <span class="popup__input_type_error np-title-error"></span>
+        <span className="popup__input_type_error np-title-error"></span>
       </label>
       <label className="popup__field">
         <input

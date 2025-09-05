@@ -17,7 +17,7 @@ export default function EditAvatar() {
           placeholder="Liga a la foto"
           required
         />
-        <span class="popup__input_type_error nombre-error"></span>
+        <span className="popup__input_type_error nombre-error"></span>
       </label>
 
       <button className="popup__button form__submit_inactive" type="submit">

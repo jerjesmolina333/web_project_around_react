@@ -17,7 +17,7 @@ export default function EditProfile() {
           placeholder="Nombre"
           required
         />
-        <span class="popup__input_type_error nombre-error"></span>
+        <span className="popup__input_type_error nombre-error"></span>
       </label>
       <label className="popup__field">
         <input

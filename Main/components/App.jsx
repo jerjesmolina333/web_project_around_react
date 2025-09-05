@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Header from "../../Header/Header";
-import Profile from "../../Profile/Profile";
+import Header from "../../Header/Header.jsx";
+import Profile from "../../Profile/Profile.jsx";
+import Main from "../Main.jsx";
 import Footer from "../../Footer/Footer.jsx";
 // import "./App.css";
 
@@ -12,9 +13,7 @@ function App() {
       <div class="page">
         <Header />
         <Profile />
-
-        <div class="elements"></div>
-
+        <Main />
         <Footer />
       </div>
     </>
