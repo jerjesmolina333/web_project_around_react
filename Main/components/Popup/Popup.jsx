@@ -6,7 +6,7 @@ export default function Popup(props) {
   const { onClose, title, children } = props;
 
   return (
-    <div className="imagen__container">
+    <div className="modal-form">
       <div
         className={`popup__content ${
           !title ? "popup__content_content_image" : ""

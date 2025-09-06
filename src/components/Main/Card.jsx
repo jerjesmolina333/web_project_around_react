@@ -2,7 +2,7 @@ import { useState } from "react";
 import ImagePopup from "./ImagePopup";
 
 export default function Card(props) {
-  const { name, link, handleOpenPopup } = props;
+  const { name, link, key, handleOpenPopup } = props;
   const imageComponent = { title: "", link, children: null };
   const [imagePopup, setOpenImagePopup] = useState(null);
 
@@ -16,25 +16,27 @@ export default function Card(props) {
 
   return (
     <>
-      <li className="card">
+      <li key={key} className="card">
         <img
           className="card__image"
           src={link}
           alt=""
           onClick={() => handleOpenImagePopup(imageComponent)}
         />
-        <button
+        {/* <button
           aria-label="Delete card"
           className="card__delete-button"
           type="button"
-        />
+        /> */}
+        <button>Borrar carta</button>
         <div className="card__description">
           <h2 className="card__title">{name}</h2>
-          <button
+          {/* <button
             aria-label="Like card"
             type="button"
             className="card__like-button"
-          />
+          /> */}
+          <button className="botonLikeCarta">Like</button>
         </div>
       </li>
       {imagePopup && (

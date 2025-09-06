@@ -1,7 +1,7 @@
 export default function NewCard() {
   return (
     <form
-      className="popup__formNP"
+      className="popup__form"
       name="card-form"
       id="nuevo-lugar"
       method="post"

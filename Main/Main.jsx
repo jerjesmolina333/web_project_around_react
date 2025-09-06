@@ -53,7 +53,12 @@ export default function Main() {
       <main>
         <ul className="cards__list">
           {cards.map((card) => (
-            <Card name={card.name} link={card.link} handleOpenPopup />
+            <Card
+              name={card.name}
+              link={card.link}
+              key={card._id}
+              handleOpenPopup
+            />
           ))}
         </ul>
 

@@ -9,6 +9,16 @@
   padding: 20px 0;
   /* border: 1px aqua solid; */
 }
+.cards__list {
+  list-style-type: none;
+}
+.card__description {
+  display: flex;
+  flex-direction: column;
+}
+.botonLikeCarta {
+  width: 150px;
+}
 
 .element__container {
   display: flex;

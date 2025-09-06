@@ -1,7 +1,7 @@
 export default function EditProfile() {
   return (
     <form
-      className="popup__formEP"
+      className="popup__form"
       name="EP-form"
       id="editar-perfil"
       method="post"
@@ -26,8 +26,8 @@ export default function EditProfile() {
           class="popup__input"
           id="acerca"
           placeholder="Acerca de mí"
-          minlength="2"
-          maxlength="200"
+          minLength="2"
+          maxLength="200"
           required
         />
         <span
