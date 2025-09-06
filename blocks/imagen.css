@@ -9,6 +9,13 @@
 .imagen__container {
   position: absolute;
   display: flex;
+  flex-direction: column;
+}
+.card__image {
+  max-width: 500px;
+  height: auto;
+  width: 60vw;
+  z-index: 2;
 }
 .imagen__pic {
   max-width: 500px;
