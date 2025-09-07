@@ -6,24 +6,23 @@ export default function Popup(props) {
   const { onClose, title, children } = props;
 
   return (
-    <div className="modal-form">
-      <div
-        className={`popup__content ${
-          !title ? "popup__content_content_image" : ""
-        }`}
-      >
-        {/* <button
-          aria-label="Close modal"
-          className="popup__close"
-          type="button"
-          onClick={onClose} // llama a onClose al hacer clic en el botón
-        /> */}
+    <>
+      <div className="modal-overlay">
+        <div className="popup__container">
+          <button onClick={onClose}>
+            <img
+              className="popup__cerrar"
+              src={btnCerrar}
+              alt="Imagen botón cerrar"
+            />
+          </button>
+          <div className={`${title ? "popup__heading" : ""}`}>
+            <h3 className="popup__title">{title}</h3>
 
-        <button onClick={onClose}>Cerrar modal</button>
-
-        <h3 className="popup__title">{title}</h3>
-        {children}
+            {children}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

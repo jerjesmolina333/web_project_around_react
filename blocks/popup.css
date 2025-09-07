@@ -21,8 +21,16 @@
   align-items: center;
 }
 .popup__form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.8); */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .imagen__container {
   position: absolute;
@@ -36,23 +44,6 @@
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
-.modal-form.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-}
-.modal-form-visible {
-  opacity: 1;
-  visibility: visible;
-}
-.modal-overlay-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.modal-form-hidden {
-  visibility: hidden;
-}
 
 .buttons {
   display: flex;
@@ -65,7 +56,7 @@
   background: linear-gradient(45deg, #ff6b6b, #ee5a52);
   color: white;
 }
-.close-btn {
+/* .close-btn {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -82,7 +73,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-}
+} */
 
 .modal h2 {
   margin-bottom: 20px;
@@ -125,14 +116,10 @@ body.modal-open {
   }
 }
 
-.popup_is-opened {
-  visibility: visible;
-  /* opacity: 1;
-  pointer-events: all; */
-}
-
-.popup__containerGEN {
+.popup__container {
   position: absolute;
+  width: 30vw;
+  height: 50vh;
   top: 15%;
   margin: auto;
   background-color: white;
@@ -142,18 +129,9 @@ body.modal-open {
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
-  z-index: 2;
+  z-index: 4;
 }
 
-.popup__container_NP {
-  width: 400px;
-  height: 400px;
-}
-
-.popup__container_EP {
-  width: 400px;
-  height: 400px;
-}
 .form {
   border: 0;
   /* Pone el margen y el padding dentro del contenedor: */
@@ -166,8 +144,9 @@ body.modal-open {
   position: relative;
   width: 25px;
   height: 25px;
-  left: 380px;
+  left: 180px;
   top: -30px;
+  z-index: 1;
 }
 .popup__ElImgHeading {
   font-family: Inter;
@@ -200,7 +179,7 @@ body.modal-open {
   margin-left: 19px;
   padding-top: 0;
   position: relative;
-  top: -20px;
+  top: -5px;
 }
 
 .popup__button {
