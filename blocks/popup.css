@@ -118,8 +118,8 @@ body.modal-open {
 
 .popup__container {
   position: absolute;
-  width: 30vw;
-  height: 50vh;
+  width: 75vw;
+  height: 60vh;
   top: 15%;
   margin: auto;
   background-color: white;
@@ -179,7 +179,7 @@ body.modal-open {
   margin-left: 19px;
   padding-top: 0;
   position: relative;
-  top: -5px;
+  top: -30px;
 }
 
 .popup__button {

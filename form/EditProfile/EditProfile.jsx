@@ -1,4 +1,16 @@
+import React from "react";
+
+import { useContext } from "react";
+
+import {
+  CurrentUserContext,
+  currentUser,
+} from "../../src/contexts/CurrentUserContext";
+
 export default function EditProfile() {
+  // suscribirse a CurrentUserContext
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <form
       className="popup__form"
@@ -14,7 +26,7 @@ export default function EditProfile() {
           maxLength="40"
           minLength="2"
           id="nombre"
-          placeholder="Nombre"
+          placeholder={currentUser?.name}
           required
         />
         <span className="popup__input_type_error nombre-error"></span>
@@ -25,7 +37,7 @@ export default function EditProfile() {
           type="text"
           class="popup__input"
           id="acerca"
-          placeholder="Acerca de mí"
+          placeholder={currentUser?.about}
           minLength="2"
           maxLength="200"
           required

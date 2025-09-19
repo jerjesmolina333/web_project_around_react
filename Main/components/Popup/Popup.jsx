@@ -17,7 +17,7 @@ export default function Popup(props) {
             />
           </button>
           <div className={`${title ? "popup__heading" : ""}`}>
-            <h3 className="popup__title">{title}</h3>
+            <h3 className="popup__heading">{title}</h3>
 
             {children}
           </div>

@@ -1,4 +1,16 @@
+import React from "react";
+
+import { useContext } from "react";
+
+import {
+  CurrentUserContext,
+  currentUser,
+} from "../../src/contexts/CurrentUserContext";
+
 export default function EditAvatar() {
+  // suscribirse a CurrentUserContext
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <form
       className="popup__formEdImg"
@@ -14,7 +26,7 @@ export default function EditAvatar() {
           maxLength="200"
           minLength="2"
           id="link"
-          placeholder="Liga a la foto"
+          placeholder={currentUser?.avatar}
           required
         />
         <span className="popup__input_type_error nombre-error"></span>

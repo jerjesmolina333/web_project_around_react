@@ -4,16 +4,14 @@ import Trash from "../../../images/Trash.svg";
 import imgLike from "../../../images/Like.png";
 
 export default function Card(props) {
-  const { name, link, key, handleOpenPopup } = props;
-  const imageComponent = { title: "", link, children: null };
+  // debugger;
+  const { name, link, clave, key } = props;
+  // handleOpenPopup = handleOpenPopup;
+  const imageComponent = { title: "", clave, children: null };
   const [imagePopup, setOpenImagePopup] = useState(null);
 
   function handleOpenImagePopup(imagePopup) {
     setOpenImagePopup(imagePopup);
-  }
-
-  function handleCloseImagePopup(imagePopup) {
-    setOpenImagePopup(null);
   }
 
   return (
@@ -29,14 +27,7 @@ export default function Card(props) {
 
         <div className="card__group">
           <h2 className="card__name">{name}</h2>
-          {/* <button
-            aria-label="Like card"
-            type="button"
-            className="card__like-button"
-          /> */}
-          <button className="card__like">
-            <img src={imgLike} alt="Imagen like" />
-          </button>
+          <img className="card__like" src={imgLike} alt="Imagen like" />
         </div>
       </li>
       {imagePopup && (

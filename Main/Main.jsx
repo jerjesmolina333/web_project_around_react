@@ -1,32 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewCard from "../form/NewCard/NewCard";
 import Popup from "../Main/components/Popup/Popup";
 import EditProfile from "../form/EditProfile/EditProfile";
 import EditAvatar from "../form/EditAvatar/EditAvatar";
 import Card from "../src/components/Main/Card";
+import api from "../src/utils/Api.js";
 
-const cards = [
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
-  },
-  {
-    isLiked: false,
-    _id: "5d1f064ed321eb4bdcd707de",
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:11:58.324Z",
-  },
-];
+export default function Main({ cards }) {
+  // suscribirse a CurrentUserContext
+  // const currentUser = React.useContext(CurrentUserContext);
 
-console.log(cards);
-
-export default function Main() {
   const [popup, setPopup] = useState(null);
   const [imagePopup, setImagePopup] = useState(null);
   const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
@@ -51,49 +34,37 @@ export default function Main() {
   return (
     <>
       <main>
-        <ul className="cards__list">
+        <ul className="cards__container">
           {cards.map((card) => (
             <Card
               name={card.name}
               link={card.link}
-              key={card._id}
-              handleOpenPopup
+              clave={card._id}
+              key={card.id}
             />
           ))}
         </ul>
-
-        <button onClick={() => handleOpenPopup(newCardPopup)}>
-          Agregar carta
-        </button>
-
-        {/* <button
-          aria-label="Agregar carta"
-          className=".profile__add-button"
+        <button
+          className="popup__button"
           type="button"
           onClick={() => handleOpenPopup(newCardPopup)}
-        /> */}
-
-        <button onClick={() => handleOpenPopup(editProfilePopup)}>
-          Editar Perfil
+        >
+          Nueva Carta
         </button>
-
-        {/* <button
-          aria-label="Editar perfil"
-          className=".profile__add-button"
+        <button
+          className="popup__button"
           type="button"
           onClick={() => handleOpenPopup(editProfilePopup)}
-        /> */}
-
-        <button onClick={() => handleOpenPopup(editAvatarPopup)}>
-          Cambiar Imagen
+        >
+          Editar Perfil
         </button>
-
-        {/* <button
-          aria-label="Cambiar imagen"
-          className="profile__add-button"
+        <button
+          className="popup__button"
           type="button"
           onClick={() => handleOpenPopup(editAvatarPopup)}
-        /> */}
+        >
+          Editar avatar
+        </button>
 
         {popup && (
           <Popup onClose={handleClosePopup} title={popup.title}>
