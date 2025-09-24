@@ -17,11 +17,6 @@ export class Api {
   }
 
   getUserInfo() {
-    // return fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
-    //   headers: {
-    //     authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",
-    //   },
-    // })
     return fetch(this._linkUs, this._headers)
       .then(function (res) {
         return res.json();
@@ -44,41 +39,122 @@ export class Api {
         return Promise.reject(`Error: ${error}`);
       });
   }
+  setCardLike(id) {
+    const tempURL = `https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`;
 
-  _insertaImagen(name, link) {
-    fetch(this._link, this._headers)
+    return fetch(tempURL, {
+      method: "PUT",
+      headers: {
+        authorization: "a75089ec-acc5-4d18-8c11-de5f96ae144f",
+      },
+    })
       .then(function (res) {
         return res.json();
       })
-      .then(function (data) {
-        agregaEventosBotonLike();
+      .catch(function (error) {
+        console.log(error);
+        return Promise.reject(`Error: ${res.status}`);
+      });
+  }
+  setCardNoLike(id) {
+    const tempURL = `https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`;
+
+    return fetch(tempURL, {
+      method: "DELETE",
+      headers: {
+        authorization: "a75089ec-acc5-4d18-8c11-de5f96ae144f",
+      },
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .catch(function (error) {
+        console.log(error);
+        return Promise.reject(`Error: ${res.status}`);
+      });
+  }
+
+  handleCardDelete(id) {
+    const tempURL = `https://around-api.es.tripleten-services.com/v1/cards/${id}`;
+
+    return fetch(tempURL, {
+      method: "DELETE",
+      headers: {
+        authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",
+      },
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .catch(function (error) {
+        console.log(error);
+        return Promise.reject(`Error: ${res.status}`);
+      });
+  }
+  _actualizaUsuario(data) {
+    const tempURL = "https://around-api.es.tripleten-services.com/v1/users/me";
+    const jsonParam = JSON.stringify({
+      name: data.name,
+      about: data.about,
+    });
+    const objParams = {
+      method: "PATCH",
+      headers: {
+        authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",
+        "Content-Type": "application/json",
+      },
+      body: jsonParam,
+    };
+    return fetch(tempURL, objParams)
+      .then(function (res) {
+        return res.json();
       })
       .catch(function (error) {
         console.log(error);
         return Promise.reject(`Error: ${error}`);
       });
   }
-  _actualizaAvatar(newLink) {
-    fetch(this._link, this._headers)
+
+  _insertaImagen(data) {
+    const tempURL = "https://around-api.es.tripleten-services.com/v1/cards/";
+    const jsonParam = JSON.stringify({
+      name: data.name,
+      link: data.link,
+    });
+    const objParams = {
+      method: "POST",
+      headers: {
+        authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",
+        "Content-Type": "application/json",
+      },
+      body: jsonParam,
+    };
+    return fetch(tempURL, objParams)
       .then(function (res) {
         return res.json();
       })
-      .then(function (data) {})
       .catch(function (error) {
         console.log(error);
         return Promise.reject(`Error: ${error}`);
       });
   }
-
-  _actualizaUsuario(nombre, about) {
-    fetch(this._link, this._headers)
+  _actualizaAvatar(data) {
+    const tempURL =
+      "https://around-api.es.tripleten-services.com/v1/users/me/avatar";
+    const jsonParam = JSON.stringify({
+      avatar: data.avatar,
+    });
+    const objParams = {
+      method: "PATCH",
+      headers: {
+        authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",
+        "Content-Type": "application/json",
+      },
+      body: jsonParam,
+    };
+    return fetch(tempURL, objParams)
       .then(function (res) {
         return res.json();
-      })
-      .then(function (data) {
-        // console.log("=== DATA: " + data);
-        // console.log("name: " + data.name);
-        // console.log("About: " + data.about);
       })
       .catch(function (error) {
         console.log(error);
@@ -87,7 +163,6 @@ export class Api {
   }
 }
 
-// debugger;
 const params = {
   headers: {
     authorization: "082ad1cf-6751-4277-bd54-4a8ddfdec0e7",

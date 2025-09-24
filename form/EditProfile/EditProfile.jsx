@@ -1,15 +1,31 @@
 import React from "react";
 
-import { useContext } from "react";
+import { useState, useContext } from "react";
+import api from "../../src/utils/Api.js";
+import { CurrentUserContext } from "../../src/contexts/CurrentUserContext";
 
-import {
-  CurrentUserContext,
-  currentUser,
-} from "../../src/contexts/CurrentUserContext";
+export default function EditProfile(props) {
+  const userContext = useContext(CurrentUserContext); // Suscribirse a CurrentUserContext
+  const currentUser = useContext(CurrentUserContext); // Obtiene el objeto currentUser
 
-export default function EditProfile() {
-  // suscribirse a CurrentUserContext
-  const currentUser = React.useContext(CurrentUserContext);
+  // const { handleUpdateUser } = userContext;
+
+  const [name, setName] = useState(currentUser.name); // Agrega la variable de estado para name
+  const [description, setDescription] = useState(currentUser.about); // Agrega la variable de estado para description
+
+  const handleNameChange = (evt) => {
+    setName(evt.target.value); // Actualiza name cuando cambie la entrada
+  };
+
+  const handleDescriptionChange = (evt) => {
+    setDescription(evt.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Evita el comportamiento predeterminado del envío de formularios
+    props.handleUpdateUser({ name, about: description }); // Actualiza la información del usuario // Actualiza la información del usuario
+    props.handleClosePopup();
+  };
 
   return (
     <form
@@ -18,6 +34,7 @@ export default function EditProfile() {
       id="editar-perfil"
       method="post"
       noValidate
+      onSubmit={handleSubmit}
     >
       <label className="popup__field">
         <input
@@ -27,6 +44,7 @@ export default function EditProfile() {
           minLength="2"
           id="nombre"
           placeholder={currentUser?.name}
+          onChange={handleNameChange}
           required
         />
         <span className="popup__input_type_error nombre-error"></span>
@@ -35,9 +53,9 @@ export default function EditProfile() {
         <input
           className="popup__input"
           type="text"
-          class="popup__input"
           id="acerca"
           placeholder={currentUser?.about}
+          onChange={handleDescriptionChange}
           minLength="2"
           maxLength="200"
           required
@@ -48,7 +66,7 @@ export default function EditProfile() {
         ></span>
       </label>
 
-      <button className="popup__button form__submit_inactive" type="submit">
+      <button className="popup__button popup__button_disabled" type="submit">
         Guardar
       </button>
     </form>

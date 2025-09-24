@@ -1,4 +1,25 @@
-export default function NewCard() {
+import { useState } from "react";
+
+export default function NewCard(props) {
+  const [name, setName] = useState(""); // Agrega la variable de estado para name
+  const [link, setLink] = useState("");
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault(); // Evita el comportamiento predeterminado del envío de formularios
+    props.handleAddPlaceSubmit({
+      name,
+      link,
+    });
+    props.handleClosePopup();
+  };
+
+  const handleNameChange = (evt) => {
+    setName(evt.target.value);
+  };
+  const handleLinkChange = (evt) => {
+    setLink(evt.target.value);
+  };
+
   return (
     <>
       <form
@@ -6,6 +27,7 @@ export default function NewCard() {
         name="card-form"
         id="nuevo-lugar"
         method="post"
+        onSubmit={handleSubmit}
         noValidate
       >
         <label className="popup__field">
@@ -14,8 +36,9 @@ export default function NewCard() {
             className="popup__input"
             id="np-title"
             placeholder="Título"
-            minlength="2"
-            maxlength="30"
+            minLength="2"
+            maxLength="30"
+            onChange={handleNameChange}
             required
           />
           <span className="popup__input_type_error np-title-error"></span>
@@ -26,9 +49,10 @@ export default function NewCard() {
             className="popup__input popup__input_type_url"
             id="card-link"
             name="link"
-            minlength="2"
-            maxlength="200"
+            minLength="2"
+            maxLength="200"
             placeholder="Enlace a la imagen"
+            onChange={handleLinkChange}
             required
           />
           <span

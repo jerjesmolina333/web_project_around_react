@@ -1,26 +1,29 @@
 import btnCerrar from "../../../images/BotonCerrar.png";
+import { useCallback } from "react";
 
 export default function Popup(props) {
   // se ha desestructurado onClose de props
   //los hijos son el contenido de la ventana emergente
   const { onClose, title, children } = props;
 
+  function cierraVentanaBoton() {
+    props.onClose();
+  }
+
   return (
     <>
       <div className="modal-overlay">
         <div className="popup__container">
-          <button onClick={onClose}>
-            <img
-              className="popup__cerrar"
-              src={btnCerrar}
-              alt="Imagen botón cerrar"
-            />
-          </button>
+          <img
+            className="popup__cerrar"
+            src={btnCerrar}
+            alt="Imagen botón cerrar"
+            onClick={() => cierraVentanaBoton()}
+          />
           <div className={`${title ? "popup__heading" : ""}`}>
-            <h3 className="popup__heading">{title}</h3>
-
-            {children}
+            <h3>{title}</h3>
           </div>
+          {children}
         </div>
       </div>
     </>
