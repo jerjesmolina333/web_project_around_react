@@ -1,10 +1,9 @@
 // import Section from "./Section.js";
-import { cardListSelector, paramsValidationNP } from "../utils/constants.js";
-import Section from "../../scripts/Section.js";
-import { useEffect } from "react";
+// import { cardListSelector, paramsValidationNP } from "../utils/constants.js";
+// import Section from "../../scripts/Section.js";
+// import { useEffect } from "react";
 
-import { Card } from "../../scripts/Card.js";
-import { agregaEventosBotonLike } from "../../scripts/utils.js";
+// import { Card } from "../../scripts/Card.js";
 
 let datosUs;
 const initialImages = [];
@@ -115,7 +114,7 @@ export class Api {
       });
   }
 
-  _insertaImagen(data) {
+  insertaImagen(data) {
     const tempURL = "https://around-api.es.tripleten-services.com/v1/cards/";
     const jsonParam = JSON.stringify({
       name: data.name,

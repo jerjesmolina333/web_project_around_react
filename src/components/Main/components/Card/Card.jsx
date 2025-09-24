@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ImagePopup from "./ImagePopup";
-import Trash from "../../../images/Trash.svg";
-import imgLike from "../../../images/Like.png";
-import api from "../../../src/utils/Api";
+import ImagePopup from "../Popup/ImagePopup/ImagePopup";
+import Trash from "../../../../../images/Trash.svg";
+import imgLike from "../../../../../images/Like.png";
+import api from "../../../../utils/Api";
 
 export default function Card(props) {
   const { name, link, isLiked } = props;

@@ -1,8 +1,7 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "../Main/components/App";
-import EditAvatar from "../form/EditAvatar/EditAvatar";
+import App from "../src/components/App";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

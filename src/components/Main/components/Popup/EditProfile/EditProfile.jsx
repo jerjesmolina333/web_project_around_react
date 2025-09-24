@@ -1,8 +1,8 @@
 import React from "react";
 
 import { useState, useContext } from "react";
-import api from "../../src/utils/Api.js";
-import { CurrentUserContext } from "../../src/contexts/CurrentUserContext";
+import api from "../../../../../utils/Api";
+import { CurrentUserContext } from "../../../../../contexts/CurrentUserContext";
 
 export default function EditProfile(props) {
   const userContext = useContext(CurrentUserContext); // Suscribirse a CurrentUserContext

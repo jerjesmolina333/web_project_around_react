@@ -1,5 +1,4 @@
-import btnCerrar from "../../../images/BotonCerrar.png";
-import { useCallback } from "react";
+import btnCerrar from "../../../../../images/BotonCerrar.png";
 
 export default function Popup(props) {
   // se ha desestructurado onClose de props

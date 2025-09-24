@@ -4,9 +4,13 @@
   align-items: center;
   position: relative;
   width: 282px;
-  /* border: 1px blueviolet solid; */
-  z-index: 1;
+
+  /* z-index: 1; */
 }
+.popup-imag__container {
+  z-index: 100;
+}
+
 .cards__container {
   max-width: 880px;
   display: flex;
